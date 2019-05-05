@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:img="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="card"
-    type="moe.yonjigen.pvision.model.MainCardModel" />
+
+        <variable
+            name="card"
+            type="moe.yonjigen.pvision.model.MainCardModel" />
+
     </data>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:orientation="vertical">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{card.title}" />
-    </LinearLayout>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{card.title}"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                img:layout_constraintBottom_toBottomOf="parent"
+                img:layout_constraintStart_toStartOf="parent"
+                img:layout_constraintTop_toBottomOf="@+id/card_img" />
+
+            <ImageView
+                android:id="@+id/card_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/todo"
+                img:imageUrl="@{card.imageUrl}"
+                img:layout_constraintEnd_toEndOf="parent"
+                img:layout_constraintStart_toStartOf="parent"
+                img:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>
